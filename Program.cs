@@ -12,8 +12,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => 
+{
+    options.SignIn.RequireConfirmedAccount = true;
+    options.Lockout.AllowedForNewUsers = true;
+    options.Password.RequiredLength = 12;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireDigit = false;
+
+}).AddEntityFrameworkStores<ApplicationDbContext>();
 
 
 builder.Services.AddRazorPages();
