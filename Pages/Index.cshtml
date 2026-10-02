@@ -1,10 +1,285 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Blog Del Maguey — Mezcal, history and craft";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://github.com/delmaguey">building Web apps integrating IdentityServer</a>.</p>
+<style>
+    .dm {
+        --dm-smoke: #1f1b18;
+        --dm-clay: #b4532a;
+        --dm-ember: #e08a3c;
+        --dm-agave: #4f6b52;
+        --dm-paper: #f6f0e6;
+        --dm-ink: #2b2622;
+        color: var(--dm-ink);
+        font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .dm h1, .dm h2, .dm h3 { font-weight: 700; letter-spacing: -0.01em; }
+
+    .dm-eyebrow {
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        font-size: .75rem;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--dm-clay);
+    }
+
+    .dm-hero {
+        background: radial-gradient(circle at 80% 10%, rgba(224,138,60,.35), transparent 55%), var(--dm-smoke);
+        color: var(--dm-paper);
+        border-radius: 1rem;
+        padding: 4.5rem 2rem;
+    }
+
+    .dm-hero .dm-eyebrow { color: var(--dm-ember); }
+    .dm-hero p { max-width: 38rem; opacity: .9; }
+
+    .dm-btn {
+        display: inline-block;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        font-weight: 600;
+        padding: .7rem 1.4rem;
+        border-radius: 999px;
+        text-decoration: none;
+        background: var(--dm-ember);
+        color: var(--dm-smoke);
+    }
+
+    .dm-btn:hover { background: var(--dm-paper); color: var(--dm-smoke); }
+    .dm-btn-ghost { background: transparent; color: var(--dm-paper); border: 1px solid rgba(246,240,230,.5); }
+
+    .dm-section { padding: 4rem 0 1rem; }
+
+    .dm-card {
+        background: var(--dm-paper);
+        border-radius: .75rem;
+        padding: 1.75rem;
+        height: 100%;
+        border-top: 4px solid var(--dm-agave);
+    }
+
+    .dm-card a { color: var(--dm-clay); font-weight: 600; text-decoration: none; }
+    .dm-card a:hover { text-decoration: underline; }
+
+    .dm-steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+
+    .dm-steps li {
+        counter-increment: step;
+        position: relative;
+        padding: 0 0 1.75rem 3.5rem;
+        border-left: 2px solid var(--dm-agave);
+        margin-left: 1.25rem;
+    }
+
+    .dm-steps li:last-child { border-left-color: transparent; padding-bottom: 0; }
+
+    .dm-steps li::before {
+        content: counter(step);
+        position: absolute;
+        left: -1.3rem;
+        top: -.2rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background: var(--dm-agave);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, sans-serif;
+        font-weight: 700;
+    }
+
+    .dm-steps h3 { font-size: 1.15rem; margin-bottom: .25rem; }
+    .dm-steps p { margin: 0; }
+
+    .dm-agave { border-left: 3px solid var(--dm-clay); padding-left: 1rem; margin-bottom: 1.5rem; }
+    .dm-agave h3 { font-size: 1.1rem; margin-bottom: .15rem; }
+    .dm-agave p { margin: 0; font-size: .95rem; }
+
+    .dm-quote {
+        background: var(--dm-agave);
+        color: #fff;
+        border-radius: 1rem;
+        padding: 3rem 2rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-style: italic;
+    }
+
+    .dm-quote small { display: block; margin-top: .75rem; font-size: .9rem; font-style: normal; opacity: .85; }
+</style>
+
+<div class="dm">
+
+    <!-- Hero -->
+    <header class="dm-hero">
+        <div class="dm-eyebrow mb-3">Blog Del Maguey</div>
+        <h1 class="display-4">Mezcal, from the earth to the glass</h1>
+        <p class="lead mt-3 mb-4">
+            Stories, history and craft behind Mexico's ancestral spirit: the agaves,
+            the maestros mezcaleros who work them, and the best ways to drink what they make.
+        </p>
+        <a class="dm-btn me-2 mb-2" href="#process">How mezcal is made</a>
+        <a class="dm-btn dm-btn-ghost mb-2" href="#drinks">Explore the drinks</a>
+    </header>
+
+    <!-- Topics -->
+    <section class="dm-section" id="topics">
+        <div class="dm-eyebrow mb-2">What you'll find here</div>
+        <h2 class="mb-4">Everything about the spirit of the maguey</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="dm-card">
+                    <h3 class="h4">History</h3>
+                    <p>
+                        The word comes from the Nahuatl <em>mexcalli</em>, "cooked agave".
+                        Follow the drink from pre-Hispanic ritual to its Denomination of Origin in 1994.
+                    </p>
+                    <a href="#history">Read the history &rarr;</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dm-card">
+                    <h3 class="h4">Production</h3>
+                    <p>
+                        Earthen pit ovens, stone mills, open-air fermentation and small stills.
+                        See each step of a process that has barely changed in centuries.
+                    </p>
+                    <a href="#process">See the process &rarr;</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dm-card">
+                    <h3 class="h4">Drinks</h3>
+                    <p>
+                        Neat with orange and sal de gusano, or stirred into a cocktail.
+                        Tasting notes, pairings and recipes worth trying at home.
+                    </p>
+                    <a href="#drinks">Explore the drinks &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History -->
+    <section class="dm-section" id="history">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="dm-eyebrow mb-2">History</div>
+                <h2 class="mb-3">An ancestral drink with deep roots</h2>
+                <p>
+                    Agave has been cooked and eaten in Mesoamerica for thousands of years, and it sat
+                    at the center of daily and ceremonial life long before it was distilled.
+                    Mezcal grew out of that relationship between communities and the plant they call maguey.
+                </p>
+                <p>
+                    Today it is protected by a Denomination of Origin and produced in several Mexican
+                    states, with Oaxaca responsible for the great majority. Much of it still comes from
+                    family palenques where knowledge passes from one generation to the next.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div class="dm-quote">
+                    "Para todo mal, mezcal; para todo bien, también."
+                    <small>Popular Mexican saying</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="dm-section" id="process">
+        <div class="dm-eyebrow mb-2">Production process</div>
+        <h2 class="mb-4">From maguey to mezcal in five steps</h2>
+        <div class="row g-5">
+            <div class="col-lg-7">
+                <ol class="dm-steps">
+                    <li>
+                        <h3>Harvest</h3>
+                        <p>Mature agaves, often 7 to 30 years old depending on the species, are cut and their leaves trimmed away to leave the heart, or piña.</p>
+                    </li>
+                    <li>
+                        <h3>Roasting</h3>
+                        <p>The piñas cook for days in a conical pit oven lined with hot stones and covered with earth. This is where mezcal gets its smoke.</p>
+                    </li>
+                    <li>
+                        <h3>Milling</h3>
+                        <p>The cooked agave is crushed by a stone wheel called a tahona, or by hand with wooden mallets, to release its sugars.</p>
+                    </li>
+                    <li>
+                        <h3>Fermentation</h3>
+                        <p>Fibers and juice rest in open wooden vats, where wild yeasts ferment them over several days.</p>
+                    </li>
+                    <li>
+                        <h3>Distillation</h3>
+                        <p>The ferment is distilled twice in copper or clay pot stills, then adjusted and bottled by the maestro mezcalero.</p>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-5">
+                <h3 class="h5 mb-3">Agaves worth knowing</h3>
+                <div class="dm-agave">
+                    <h3>Espadín</h3>
+                    <p>The most widely cultivated agave and the base of most mezcal. Balanced, approachable, a good place to start.</p>
+                </div>
+                <div class="dm-agave">
+                    <h3>Tobalá</h3>
+                    <p>A small wild agave that grows at altitude. Known for floral, fruity and delicate spirits.</p>
+                </div>
+                <div class="dm-agave">
+                    <h3>Tepeztate</h3>
+                    <p>Can take 25 years or more to mature. Intense, herbal and green.</p>
+                </div>
+                <div class="dm-agave">
+                    <h3>Madrecuishe</h3>
+                    <p>A tall, cylindrical agave that gives dry, mineral and earthy mezcal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drinks -->
+    <section class="dm-section" id="drinks">
+        <div class="dm-eyebrow mb-2">Drinks</div>
+        <h2 class="mb-4">How to drink it</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="dm-card">
+                    <h3 class="h5">Neat</h3>
+                    <p class="mb-0">Sipped slowly from a veladora or jícara, with orange slices and sal de gusano on the side.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="dm-card">
+                    <h3 class="h5">Oaxaca Old Fashioned</h3>
+                    <p class="mb-0">Mezcal and reposado tequila with agave nectar and bitters. Smoky and smooth.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="dm-card">
+                    <h3 class="h5">Mezcal Negroni</h3>
+                    <p class="mb-0">Mezcal in place of gin with Campari and sweet vermouth. Bitter, with a smoky edge.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="dm-card">
+                    <h3 class="h5">Mezcal Paloma</h3>
+                    <p class="mb-0">Grapefruit, lime, a pinch of salt and soda. Bright and easy to drink.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="dm-section pb-5 text-center">
+        <h2 class="mb-3">Sip slowly, read on</h2>
+        <p class="mx-auto mb-4" style="max-width: 36rem;">
+            New articles on palenques, agave varieties and recipes are on the way.
+        </p>
+        <a class="dm-btn" href="#topics">Start exploring</a>
+    </section>
+
 </div>
